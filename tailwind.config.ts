@@ -11,6 +11,19 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+
+        // Primary
+
+        orange: "#FF7D1A",
+        paleOrange: "#FFEDE0",
+
+        // Neutral
+        veryDarkBlue: "#1D2025",
+        darkGrayishBlue: "#68707D",
+        grayishBlue: "#B6BCC8",
+        lightGrayishBlue: "#F7F8FD",
+        
+
       },
     },
   },
