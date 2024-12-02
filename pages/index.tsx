@@ -5,7 +5,7 @@ export default function Home() {
     <div>
       <Navbar />
 
-      <div className="flex flex-col mx-36">Inicio</div>
+      <div className="flex flex-col lg:mx-36">Inicio</div>
     </div>
   );
 }
