@@ -3,10 +3,12 @@ import Navbar from "@/components/Navbar";
 import ProductModel from "@/models/ProductModel";
 import { IoCartOutline } from "react-icons/io5";
 import ImagesSlide from "@/components/ImagesSlide";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useAppSelector, useAppDispatch } from "@/hooks/hooks";
+import { addToCart } from "@/features/CartSlice";
 
 const product: ProductModel = {
-  id: 1,
+  id: "1",
   title: "Fall Limited Edition Sneakers",
   seller: "SNEAKER COMPANY",
   price: "250.00",
@@ -36,14 +38,21 @@ const product: ProductModel = {
 
 export default function Home() {
   const [countProduct, setCountProduct] = useState<number>(1);
+  const cartItems = useAppSelector((state) => state.cart);
 
-  const handleAddProduct = () => {
-    setCountProduct(countProduct + 1);
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cartItems));
+  }, [cartItems]);
+
+  const handleAddProductCount = () => {
+    setCountProduct((prev) => prev + 1);
   };
 
-  const handleRemoveProduct = () => {
+  const handleRemoveProductCount = () => {
     if (countProduct > 1) {
-      setCountProduct(countProduct - 1);
+      setCountProduct((prev) => prev - 1);
     }
   };
 
@@ -53,7 +62,6 @@ export default function Home() {
 
       <div className="flex lg:mx-36 mt-16">
         <div className="flex w-1/2 items-center justify-center">
-          {/* ImagesSlide component */}
           <ImagesSlide product={product} />
         </div>
         <div className="flex flex-col w-1/2 items-center justify-center">
@@ -80,7 +88,7 @@ export default function Home() {
 
             <div className="flex w-full gap-x-8 mt-8">
               <div className="flex bg-lightGrayishBlue rounded-lg py-6">
-                <button className="px-4" onClick={handleRemoveProduct}>
+                <button className="px-4" onClick={handleRemoveProductCount}>
                   <Image
                     src={"/icons/icon-minus.svg"}
                     alt="minus"
@@ -89,7 +97,7 @@ export default function Home() {
                   />
                 </button>
                 <p className="px-6 font-[700]">{countProduct}</p>
-                <button className="px-4" onClick={handleAddProduct}>
+                <button className="px-4" onClick={handleAddProductCount}>
                   <Image
                     src={"/icons/icon-plus.svg"}
                     alt="plus"
@@ -99,7 +107,14 @@ export default function Home() {
                 </button>
               </div>
 
-              <button className="flex flex-grow py-6 bg-orange rounded-lg justify-center gap-x-3">
+              <button
+                className="flex flex-grow py-6 bg-orange hover:bg-orange/80 rounded-lg justify-center gap-x-3"
+                onClick={() =>
+                  dispatch(
+                    addToCart({ productId: product.id, count: countProduct })
+                  )
+                }
+              >
                 <IoCartOutline size={24} />
                 <p className="text-veryDarkBlue font-[700]">Add to Cart</p>
               </button>

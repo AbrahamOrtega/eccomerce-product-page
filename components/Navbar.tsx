@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import Cart from "./Cart";
-import { IoCartOutline } from "react-icons/io5";
 
 export default function Navbar() {
   const [path, setPath] = useState<string>("");
@@ -87,16 +86,7 @@ export default function Navbar() {
         {/* Cart  and Perfil*/}
         <div className="flex flex-grow justify-end items-center">
           <div className="flex items-center gap-x-4 lg:gap-x-8">
-            <div onClick={handleCartOpen} className="relative">
-              <button onClick={handleCartOpen}>
-                <IoCartOutline size={32} />
-              </button>
-
-              {cartOpen && (
-                <Cart className="fixed left-0 w-full px-2 translate-y-6 lg:absolute lg:top-12 lg:w-[400px] lg:-translate-x-1/2 lg:translate-y-0" />
-              )}
-            </div>
-
+            <Cart cartOpen={cartOpen} handleCartOpen={handleCartOpen} />
             <button className="border-2 border-transparent hover:border-orange rounded-full">
               <Image
                 src="/images/image-avatar.png"
