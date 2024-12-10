@@ -1,7 +1,7 @@
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
 import { Kumbh_Sans } from "next/font/google";
-import { store } from "./store";
+import { store } from "../store";
 import { Provider } from "react-redux";
 
 const kumbhSans = Kumbh_Sans({
