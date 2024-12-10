@@ -3,7 +3,7 @@ import { MdDelete } from "react-icons/md";
 import { IoCartOutline } from "react-icons/io5";
 import ProductModel from "@/models/ProductModel";
 import { useAppSelector, useAppDispatch } from "@/hooks/hooks";
-import { removeFromCart } from "@/features/CartSlice";
+import { removeFromCart } from "@/features/cartSlice";
 
 const product: ProductModel = {
   id: "1",
@@ -68,7 +68,7 @@ export default function Cart(props: {
       {/* Cart panel */}
       {props.cartOpen && (
         <div
-          className="fixed left-0 w-full px-2 translate-y-6 lg:absolute lg:top-12 lg:w-[400px] lg:-translate-x-1/2 lg:translate-y-0"
+          className="fixed right-0 w-full px-2 top-[72px] max-w-[500px] lg:absolute lg:left-0 lg:top-12 lg:w-[400px] lg:-translate-x-1/2 lg:translate-y-0"
           onClick={(e) => e.stopPropagation()}
         >
           <div className="flex flex-col bg-white shadow-xl rounded-lg py-6 gap-y-4 items-start">
@@ -101,7 +101,10 @@ export default function Cart(props: {
                         <p>{product.newPrice}</p>
                         <p>x {item.count}</p>
                         <p className="text-veryDarkBlue font-[700]">
-                          ${125 * item.count}
+                          {`$${
+                            Number.parseFloat(product.newPrice || "") *
+                            item.count
+                          }.00`}
                         </p>
                       </div>
                     </div>

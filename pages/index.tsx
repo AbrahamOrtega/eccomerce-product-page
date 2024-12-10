@@ -74,17 +74,19 @@ export default function Home() {
             </h3>
             <p className="text-darkGrayishBlue mt-8">{product.description}</p>
 
-            <div className="flex items-center mt-6 gap-x-6">
-              <p className="text-veryDarkBlue font-[700] text-[24px] lg:text-[36px]">
-                ${product.newPrice}
-              </p>
-              <div className="text-white font-[700] bg-veryDarkBlue px-2 rounded">
-                {product.descount}
+            <div className="flex flex-row lg:flex-col w-full lg:w-fit justify-between items-center lg:items-start">
+              <div className="flex items-center mt-6 gap-x-6">
+                <p className="text-veryDarkBlue font-[700] text-[24px] lg:text-[36px]">
+                  ${product.newPrice}
+                </p>
+                <div className="text-white font-[700] bg-veryDarkBlue px-2 rounded">
+                  {product.descount}
+                </div>
               </div>
+              <p className="text-[16px] lg:text-[18px] font-[700] text-darkGrayishBlue line-through">
+                ${product.price}
+              </p>
             </div>
-            <p className="text-[16px] lg:text-[18px] font-[700] text-darkGrayishBlue line-through">
-              ${product.price}
-            </p>
 
             <div className="flex flex-col lg:flex-row w-full gap-x-8 gap-y-4 mt-8">
               <div className="flex bg-lightGrayishBlue rounded-lg py-6 justify-between">
