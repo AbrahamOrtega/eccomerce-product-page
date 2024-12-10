@@ -29,7 +29,7 @@ export default function ImagesSlideModal(props: {
       onClick={() => props.setModalOpen(false)}
     >
       <div
-        className="flex flex-col w-full max-w-[30%]"
+        className="flex flex-col w-full max-w-[600px]"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex w-full justify-end">
@@ -42,20 +42,20 @@ export default function ImagesSlideModal(props: {
         <div className="relative w-full rounded-lg">
           {/* Button "Prev" */}
           <Link
-            className="absolute top-1/2 left-0 transform -translate-y-1/2 -translate-x-1/2 z-20 rounded-full bg-white shadow-lg p-2"
+            className="absolute top-1/2 left-0 transform -translate-y-1/2 translate-x-1/2 lg:-translate-x-1/2 z-20 rounded-full bg-white shadow-lg p-2"
             href={`#${props.activeImage - 1}`}
             onClick={handlePrev}
           >
-            <IoIosArrowBack className="text-veryDarkBlue hover:text-orange text-4xl font-[700]" />
+            <IoIosArrowBack className="text-veryDarkBlue hover:text-orange text-3xl lg:text-4xl font-[700]" />
           </Link>
 
           {/* Button "Next" */}
           <Link
-            className="absolute top-1/2 right-0 transform -translate-y-1/2 translate-x-1/2 z-20 rounded-full bg-white shadow-lg p-2"
+            className="absolute top-1/2 right-0 transform -translate-y-1/2 lg:translate-x-1/2 -translate-x-1/2 z-20 rounded-full bg-white shadow-lg p-2"
             href={`#${props.activeImage + 1}`}
             onClick={handleNext}
           >
-            <IoIosArrowForward className="text-veryDarkBlue hover:text-orange text-4xl font-[700]" />
+            <IoIosArrowForward className="text-veryDarkBlue hover:text-orange text-3xl lg:text-4xl font-[700]" />
           </Link>
 
           <div className="flex w-full rounded-xl overflow-x-auto snap-x snap-mandatory scroll-smooth hide-scrollbar cursor-pointer">

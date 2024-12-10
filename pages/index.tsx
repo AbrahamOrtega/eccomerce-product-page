@@ -5,7 +5,7 @@ import { IoCartOutline } from "react-icons/io5";
 import ImagesSlide from "@/components/ImagesSlide";
 import { useState, useEffect } from "react";
 import { useAppSelector, useAppDispatch } from "@/hooks/hooks";
-import { addToCart } from "@/features/CartSlice";
+import { addToCart } from "@/features/cartSlice";
 
 const product: ProductModel = {
   id: "1",
@@ -60,34 +60,34 @@ export default function Home() {
     <div>
       <Navbar />
 
-      <div className="flex lg:mx-36 mt-16">
-        <div className="flex w-1/2 items-center justify-center">
+      <div className="flex flex-col lg:flex-row lg:mx-36 lg:mt-12 lg:mb-0 mb-8">
+        <div className="flex w-full lg:w-1/2 items-center justify-center">
           <ImagesSlide product={product} />
         </div>
-        <div className="flex flex-col w-1/2 items-center justify-center">
-          <div className="flex flex-col w-full max-w-[80%]">
+        <div className="flex flex-col w-full lg:w-1/2 items-center justify-center mt-6 lg:mt-0 px-4 lg:px-0">
+          <div className="flex flex-col w-full lg:max-w-[80%]">
             <p className="text-darkGrayishBlue font-[700] tracking-widest">
               {product.seller}
             </p>
-            <h3 className="text-[56px] font-[700] leading-tight mt-2">
+            <h3 className="text-[36px] lg:text-[56px] font-[700] leading-tight mt-2">
               {product.title}
             </h3>
             <p className="text-darkGrayishBlue mt-8">{product.description}</p>
 
             <div className="flex items-center mt-6 gap-x-6">
-              <p className="text-veryDarkBlue font-[700] text-[36px]">
+              <p className="text-veryDarkBlue font-[700] text-[24px] lg:text-[36px]">
                 ${product.newPrice}
               </p>
               <div className="text-white font-[700] bg-veryDarkBlue px-2 rounded">
                 {product.descount}
               </div>
             </div>
-            <p className="text-[18px] font-[700] text-darkGrayishBlue line-through">
+            <p className="text-[16px] lg:text-[18px] font-[700] text-darkGrayishBlue line-through">
               ${product.price}
             </p>
 
-            <div className="flex w-full gap-x-8 mt-8">
-              <div className="flex bg-lightGrayishBlue rounded-lg py-6">
+            <div className="flex flex-col lg:flex-row w-full gap-x-8 gap-y-4 mt-8">
+              <div className="flex bg-lightGrayishBlue rounded-lg py-6 justify-between">
                 <button className="px-4" onClick={handleRemoveProductCount}>
                   <Image
                     src={"/icons/icon-minus.svg"}
